@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <style>
+        textarea {
+            width: 500px;
+            height: 100px;
+        }
+        
+        .work_space {
+            display: flex;
+            justify-content: space-around;
+        }
+        
+        .page {
+            padding: 50px;
+        }
+        
+        .result {
+            padding: 50px;
+        }
+    </style>
+    <input type="number" class="all_page">
+    <button id="create">Create</button>
+    <button id="load">Load</button>
+    <a id="todownload">Save</a>
+    <div class="work_space">
+        <div class="page">
+        </div>
+        <div class="result">
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script>
+        let aa = $(".page");
+        let res = $(".result");
+        let new_json = "";
+        let get_in;
+        let load_json;
+        let a = "";
+
+
+        document.getElementById('todownload').onclick = function() {
+
+            let text = load_json;
+            let myData = 'data:application/txt;charset=utf-8,' + encodeURIComponent(text);
+            this.href = myData;
+            this.download = 'data.json';
+
+        }
+
+        $("#create").click(function(e) {
+            get_in = $('.all_page').val();
+            get_in = parseInt(get_in);
+
+            console.log(get_in);
+            Create_inp(get_in);
+        });
+        $("#load").click(function(e) {
+            Load_data(get_in);
+        });
+
+
+
+
+        function Load_data(all_page) {
+            load_json = "";
+            load_json += "{";
+            for (let index = 1; index < (all_page + 1); index++) {
+                let id_txt = $('#page_' + index).val();
+                // console.log(id_txt);
+                load_json += '\"' + index + '\": { \n \"page\":' + index + ', \n \"text\":\"' + id_txt + '\" \n },';
+            }
+
+            load_json = load_json.slice(0, -1);
+            load_json += "}";
+            res.html(load_json);
+        }
+
+        function Create_inp(all_page) {
+
+            a = "";
+            for (let index = 1; index < (all_page + 1); index++) {
+                a += '<p>' + index + '<textarea id=\"' + 'page_' + index + '\"></textarea></p>';
+                aa.html(a);
+
+            }
+        }
+    </script>
+</body>
+
+</html>

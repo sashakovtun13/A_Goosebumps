@@ -1,0 +1,38 @@
+@font-face {
+    font-family: "Book";
+    src: url("../font/BOOKN.ttf");
+}
+
+body {
+    background: url("../img/bg.jpg");
+    background-size: cover;
+    padding: 20px;
+}
+
+p {
+    font-family: "Book";
+    font-size: 17px;
+}
+
+.g_to {
+    margin: 20px 0 20px 0;
+    color: red;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+#page {
+    text-align: center;
+    margin: 10px;
+    font-size: 20px;
+}
+
+img {
+    width: 100%;
+    margin: 20px 0 20px 0;
+}
+
+.btns {
+    display: flex;
+    justify-content: space-between;
+}
