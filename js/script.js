@@ -101,7 +101,7 @@ function save_page() {
         localStorage.setItem('page', (parseInt($('#page').text())));
 
         page = localStorage.getItem('page');
-
+        alert("Save");
         console.log(page);
 
     });
